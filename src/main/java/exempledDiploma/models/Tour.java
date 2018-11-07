@@ -1,16 +1,20 @@
 package exempledDiploma.models;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Tour {
 	private int id;
 	private String nameTour;
-	private String dateTourBegin;
-	private String dateTourEnd;
-	private String flytime;
+	private Double priceTour;
+	private Date dateTourBegin;
+	private Date dateTourEnd;
+	private Time flytime;
 	
 	@Override
 	public String toString() {
-		return "Tour [id=" + id + ", nameTour=" + nameTour + ", dateTourBegin=" + dateTourBegin + ", dateTourEnd="
-				+ dateTourEnd + ", flytime=" + flytime + "]";
+		return "Tour [id=" + id + ", nameTour=" + nameTour + ", priceTour=" + priceTour + ", dateTourBegin="
+				+ dateTourBegin + ", dateTourEnd=" + dateTourEnd + ", flytime=" + flytime + "]";
 	}
 
 	public int getId() {
@@ -29,27 +33,35 @@ public class Tour {
 		this.nameTour = nameTour;
 	}
 
-	public String getDateTourBegin() {
+	public Double getPriceTour() {
+		return priceTour;
+	}
+
+	public void setPriceTour(Double priceTour) {
+		this.priceTour = priceTour;
+	}
+
+	public Date getDateTourBegin() {
 		return dateTourBegin;
 	}
 
-	public void setDateTourBegin(String dateTourBegin) {
+	public void setDateTourBegin(Date dateTourBegin) {
 		this.dateTourBegin = dateTourBegin;
 	}
 
-	public String getDateTourEnd() {
+	public Date getDateTourEnd() {
 		return dateTourEnd;
 	}
 
-	public void setDateTourEnd(String dateTourEnd) {
+	public void setDateTourEnd(Date dateTourEnd) {
 		this.dateTourEnd = dateTourEnd;
 	}
 
-	public String getFlytime() {
+	public Time getFlytime() {
 		return flytime;
 	}
 
-	public void setFlytime(String flytime) {
+	public void setFlytime(Time flytime) {
 		this.flytime = flytime;
 	}
 
