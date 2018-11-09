@@ -13,7 +13,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", lastName=" + lastName + ", dob=" + dob + ", tours=" + tours + "]";
+		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", dob=" + dob + ", email=" + email
+				+ "]";
 	}
 
 	public int getId() {

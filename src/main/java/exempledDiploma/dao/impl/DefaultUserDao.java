@@ -35,6 +35,7 @@ public class DefaultUserDao implements UserDao {
 				user.setName(rs.getString("name"));
 				user.setLastName(rs.getString("last_name"));
 				user.setDob(rs.getString("dob"));
+				user.setEmail(rs.getString("email"));
 			}
 
 		} catch (SQLException e) {

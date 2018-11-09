@@ -15,6 +15,11 @@ import exempledDiploma.models.User;
 @WebServlet("/updateUser")
 public class UpdateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int userIdTmp;
+	private String nameTmp;
+	private String lastNameTmp;
+	private String dobTmp;
+	private String emailTmp;
 
 	private UserFacade userFacade;
 	{
@@ -23,6 +28,14 @@ public class UpdateUser extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		User user = userFacade.getUserById(Integer.valueOf(request.getParameter("userId")));
+		userIdTmp = user.getId();
+		nameTmp = user.getName();
+		lastNameTmp = user.getLastName();
+		dobTmp = user.getDob();
+		emailTmp = user.getEmail();
+		System.out.println(user);
+		request.setAttribute("user", user); // set attribute for .jsp
 		RequestDispatcher rs = request.getRequestDispatcher("WEB-INF/views/updateUser.jsp");
 		rs.forward(request, response);
 
@@ -39,8 +52,15 @@ public class UpdateUser extends HttpServlet {
 		String email = request.getParameter("email");
 
 		User user = new User();
-		user.setId(Integer.valueOf(userId));
-		user.setName(name);
+		user.setId(userIdTmp);
+		
+//		if (name != null) { // empty box check condition!!!!????
+//			System.out.println("not null");
+				user.setName(name);
+//		} else
+//			System.out.println("null check Name:" + nameTmp);
+//			user.setName(nameTmp);
+
 		user.setLastName(lastName);
 		user.setDob(dob);
 		user.setEmail(email);
