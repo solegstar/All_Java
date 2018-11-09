@@ -1,6 +1,7 @@
 package exempledDiploma.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ import exempledDiploma.models.User;
 
 public class DefaultUserDao implements UserDao {
 	public static final String SELECT_USER_BY_ID_QUERY = "SELECT * FROM user WHERE user.id = ?";
-	public static final String INSERT_USER_WITH_NAME_ONLY = "INSERT INTO user (name) VALUES (?)";
+	public static final String INSERT_NEW_USER = "INSERT INTO user (name, last_name, dob, email) VALUES (?, ?, ?, ?)";
 	private DataSource ds;
 
 	{
@@ -32,7 +33,7 @@ public class DefaultUserDao implements UserDao {
 				user.setId(rs.getInt("id"));
 				user.setName(rs.getString("name"));
 				user.setLastName(rs.getString("last_name"));
-				user.setDob(rs.getDate("dob"));
+				user.setDob(rs.getString("dob"));
 			}
 
 		} catch (SQLException e) {
@@ -53,8 +54,11 @@ public class DefaultUserDao implements UserDao {
 	@Override
 	public boolean saveUser(User user) {
 		try (Connection conn = ds.getConnection()) {
-			PreparedStatement ps = conn.prepareStatement(INSERT_USER_WITH_NAME_ONLY);
+			PreparedStatement ps = conn.prepareStatement(INSERT_NEW_USER);
 			ps.setString(1, user.getName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getDob());
+			ps.setString(4, user.getEmail());
 			// TODO change sql query to insert email and other fields
 			ps.executeUpdate();
 		} catch (SQLException e) {

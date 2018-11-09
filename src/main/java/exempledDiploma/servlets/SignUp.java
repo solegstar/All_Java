@@ -33,16 +33,16 @@ public class SignUp extends HttpServlet {
 		System.out.println("DO POST");
 
 		String name = request.getParameter("name");
+		String lastName = request.getParameter("last_name");
+		String dob = request.getParameter("dob");
 		String email = request.getParameter("email");
 
 		User user = new User();
 		user.setName(name);
+		user.setLastName(lastName);
+		user.setDob(dob);
 		user.setEmail(email);
-//		userFacade.saveUser(user);
-//		
-//		request.setAttribute("user", user);
-//		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");
-//		rd.forward(request, response);
+
 		if (userFacade.saveUser(user)) {
 			request.setAttribute("user", user);
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");

@@ -8,7 +8,7 @@ public class User {
 	private int id;
 	private String name;
 	private String lastName;
-	private Date dob;
+	private String dob;
 	private String email;
 	private List<Tour> tours;
 
@@ -41,11 +41,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
