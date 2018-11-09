@@ -9,6 +9,7 @@ public class User {
 	private String name;
 	private String lastName;
 	private Date dob;
+	private String email;
 	private List<Tour> tours;
 
 	@Override
@@ -46,6 +47,14 @@ public class User {
 
 	public void setDob(Date dob) {
 		this.dob = dob;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public List<Tour> getTours() {

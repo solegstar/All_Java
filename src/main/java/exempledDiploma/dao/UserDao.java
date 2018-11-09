@@ -7,4 +7,6 @@ import exempledDiploma.models.User;
 public interface UserDao {
 	User getUserById(int id);
 	List <User> getAllUsers();
+	boolean saveUser(User user);
+
 }

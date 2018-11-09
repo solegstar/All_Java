@@ -1,0 +1,54 @@
+package exempledDiploma.servlets;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import exempledDiploma.facades.UserFacade;
+import exempledDiploma.models.User;
+
+@WebServlet("/signup")
+public class SignUp extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	private UserFacade userFacade;
+	{
+		userFacade = new UserFacade();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher rs = request.getRequestDispatcher("WEB-INF/views/signup.jsp");
+		rs.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("DO POST");
+
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+
+		User user = new User();
+		user.setName(name);
+		user.setEmail(email);
+//		userFacade.saveUser(user);
+//		
+//		request.setAttribute("user", user);
+//		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");
+//		rd.forward(request, response);
+		if (userFacade.saveUser(user)) {
+			request.setAttribute("user", user);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");
+			rd.forward(request, response);
+		}
+
+	}
+
+}
