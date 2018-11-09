@@ -22,5 +22,12 @@ public class UserFacade {
 	public boolean saveUser (User user) {
 		return userDao.saveUser(user);
 	}
+	
+	public boolean updateUser (User user) {
+		return userDao.updateUser(user);
+	}
 
+	public boolean deleteUser (User user) {
+		return userDao.deleteUser(user);
+	}
 }

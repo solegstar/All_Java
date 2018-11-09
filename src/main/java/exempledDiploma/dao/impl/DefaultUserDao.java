@@ -1,7 +1,6 @@
 package exempledDiploma.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +15,8 @@ import exempledDiploma.models.User;
 public class DefaultUserDao implements UserDao {
 	public static final String SELECT_USER_BY_ID_QUERY = "SELECT * FROM user WHERE user.id = ?";
 	public static final String INSERT_NEW_USER = "INSERT INTO user (name, last_name, dob, email) VALUES (?, ?, ?, ?)";
+	public static final String UPDATE_USER = "UPDATE user SET name = (?), last_name = (?), dob = (?), email = (?) WHERE (id = (?))";
+	public static final String DELETE_USER = "DELETE FROM user WHERE (id = (?));";
 	private DataSource ds;
 
 	{
@@ -59,6 +60,38 @@ public class DefaultUserDao implements UserDao {
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getDob());
 			ps.setString(4, user.getEmail());
+			// TODO change sql query to insert email and other fields
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		try (Connection conn = ds.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(UPDATE_USER);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getDob());
+			ps.setString(4, user.getEmail());
+			ps.setInt(5, user.getId());
+			// TODO change sql query to insert email and other fields
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean deleteUser(User user) {
+		try (Connection conn = ds.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(DELETE_USER);
+			ps.setInt(1, user.getId());
 			// TODO change sql query to insert email and other fields
 			ps.executeUpdate();
 		} catch (SQLException e) {

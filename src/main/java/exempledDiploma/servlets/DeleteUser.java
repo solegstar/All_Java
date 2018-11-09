@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import exempledDiploma.facades.UserFacade;
 import exempledDiploma.models.User;
 
-@WebServlet("/signup")
-public class SignUp extends HttpServlet {
+@WebServlet("/deleteUser")
+public class DeleteUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UserFacade userFacade;
@@ -23,29 +23,23 @@ public class SignUp extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rs = request.getRequestDispatcher("WEB-INF/views/signup.jsp");
+		RequestDispatcher rs = request.getRequestDispatcher("WEB-INF/views/deleteUser.jsp");
 		rs.forward(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("DO POST - SignUp");
+		System.out.println("DO POST - Delete User");
 
-		String name = request.getParameter("name");
-		String lastName = request.getParameter("last_name");
-		String dob = request.getParameter("dob");
-		String email = request.getParameter("email");
+		String userId = request.getParameter("user_id");
 
 		User user = new User();
-		user.setName(name);
-		user.setLastName(lastName);
-		user.setDob(dob);
-		user.setEmail(email);
+		user.setId(Integer.valueOf(userId));
 
-		if (userFacade.saveUser(user)) {
+		if (userFacade.deleteUser(user)) {
 			request.setAttribute("user", user);
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/successDelete.jsp");
 			rd.forward(request, response);
 		}
 

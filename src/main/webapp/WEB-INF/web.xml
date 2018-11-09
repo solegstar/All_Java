@@ -10,9 +10,29 @@
   	<description></description>
   	<servlet-class>exempledDiploma.servlets.SignUp</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UpdateUser</servlet-name>
+  	<display-name>UpdateUser</display-name>
+  	<description></description>
+  	<servlet-class>exempledDiploma.servlets.UpdateUser</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeleteUser</servlet-name>
+  	<display-name>DeleteUser</display-name>
+  	<description></description>
+  	<servlet-class>exempledDiploma.servlets.DeleteUser</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>SignUp</servlet-name>
   	<url-pattern>/SignUp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateUser</servlet-name>
+  	<url-pattern>/UpdateUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteUser</servlet-name>
+  	<url-pattern>/DeleteUser</url-pattern>
   </servlet-mapping>
   
 </web-app>
