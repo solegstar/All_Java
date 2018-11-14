@@ -9,17 +9,14 @@
 </head>
 <body>
 	<form action="updateUser" method="POST">
-		<p>User ID now is ${user.id }.</p>
-		<p>First Name now is ${user.name }.</p>
-		<input type="text" name="name" />
-		<p>Last Name now is ${user.lastName }.</p>
-		<input type="text" name="last_name" />
-		<p>Password</p>
-		<input type="password" />
-		<p>Email now is ${user.email }.</p>
-		<input type="email" name="email" />
-		<p>Date of Birth now is ${user.dob }</p>
-		<input type="date" name="dob" /> <input type="submit" />
+		<input id="userId" type="hidden" name="user_id" value="${user.id }">
+		<p>First Name: <input id="userName" type="text" name="name" value="${user.name }" required/> <span style="color:red"> ${nameErrorMessage} </span></p>
+		<p>Last Name: <input id="userLastName" type="text" name="last_name" value="${user.lastName }" required/> <span style="color:red"> ${lastNameErrorMessage} </span></p>
+		<p>Password: <input id="userPass" type="password" name="password" value="1234" required/> <span style="color:red"> ${lastNameErrorMessage} </span></p>
+		<p>Confirm Password: <input id="userConfPass" type="password" name="confPass" value="1234" required/> <span style="color:red"> ${lastNameErrorMessage} </span></p>
+		<p>Email: <input id="userEmail" type="text" name="email" value="${user.email }" required/> <span style="color:red"> ${emailErrorMessage} </span></p>
+		<p>Day of Birth: <input id="userDob" type="date" name="dob" value="${user.dob }" required/> <span style="color:red"> ${dobErrorMessage} </span></p>
+		 <input type="submit" />
 	</form>
 </body>
 </html>
