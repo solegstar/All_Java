@@ -25,7 +25,6 @@ public class SignUp extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher rs = request.getRequestDispatcher("WEB-INF/views/signup.jsp");
 		rs.forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -48,7 +47,5 @@ public class SignUp extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/success.jsp");
 			rd.forward(request, response);
 		}
-
 	}
-
 }

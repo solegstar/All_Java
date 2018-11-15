@@ -1,15 +1,12 @@
 package exempledDiploma.models;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Tour {
 	private int id;
 	private String nameTour;
-	private Double priceTour;
-	private Date dateTourBegin;
-	private Date dateTourEnd;
-	private Time flytime;
+	private String priceTour;
+	private String dateTourBegin;
+	private String dateTourEnd;
+	private String flytime;
 	
 	@Override
 	public String toString() {
@@ -33,35 +30,35 @@ public class Tour {
 		this.nameTour = nameTour;
 	}
 
-	public Double getPriceTour() {
+	public String getPriceTour() {
 		return priceTour;
 	}
 
-	public void setPriceTour(Double priceTour) {
+	public void setPriceTour(String priceTour) {
 		this.priceTour = priceTour;
 	}
 
-	public Date getDateTourBegin() {
+	public String getDateTourBegin() {
 		return dateTourBegin;
 	}
 
-	public void setDateTourBegin(Date dateTourBegin) {
+	public void setDateTourBegin(String dateTourBegin) {
 		this.dateTourBegin = dateTourBegin;
 	}
 
-	public Date getDateTourEnd() {
+	public String getDateTourEnd() {
 		return dateTourEnd;
 	}
 
-	public void setDateTourEnd(Date dateTourEnd) {
+	public void setDateTourEnd(String dateTourEnd) {
 		this.dateTourEnd = dateTourEnd;
 	}
 
-	public Time getFlytime() {
+	public String getFlytime() {
 		return flytime;
 	}
 
-	public void setFlytime(Time flytime) {
+	public void setFlytime(String flytime) {
 		this.flytime = flytime;
 	}
 

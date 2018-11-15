@@ -8,21 +8,13 @@
 </head>
 <body>
 	<form action="signup" method="POST">
-
-		<p>First Name</p>
-		<input type="text" name="name" />
-
-		<p>Last Name</p>
-		<input type="text" name="last_name" />
-
-		<p>Password</p>
-		<input type="password" />
-		<p>Email</p>
-		<input type="email" name="email" />
-		<p>Date of Birth</p>
-		<input type="date" name="dob" /> <input type="submit" />
-
-
+		<p>First Name: <input id="userName" type="text" name="name" required/></p>
+		<p>Last Name: <input id="userLastName" type="text" name="last_name" required/></p>
+		<p>Password: <input id="userPass" type="password" name="password" required/></p>
+		<p>Confirm Password: <input id="userConfPass" type="password" name="confPass" required/></p>
+		<p>Email: <input id="userEmail" type="text" name="email" required/></p>
+		<p>Day of Birth: <input id="userDob" type="date" name="dob" required/></p>
+ 		<input type="submit" />
 	</form>
 </body>
 </html>
