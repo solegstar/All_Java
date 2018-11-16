@@ -9,12 +9,14 @@ public class User {
 	private String lastName;
 	private String dob;
 	private String email;
+	private String pass;
+	private String role;
 	private List<Tour> tours;
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", dob=" + dob + ", email=" + email
-				+ "]";
+				+ ", pass=" + pass + ", role=" + role + ", tours=" + tours + "]";
 	}
 
 	public int getId() {
@@ -55,6 +57,22 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public List<Tour> getTours() {

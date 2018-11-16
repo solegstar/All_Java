@@ -14,8 +14,8 @@ import exempledDiploma.models.User;
 
 public class DefaultUserDao implements UserDao {
 	public static final String SELECT_USER_BY_ID_QUERY = "SELECT * FROM user WHERE user.id = ?";
-	public static final String INSERT_NEW_USER = "INSERT INTO user (name, last_name, dob, email) VALUES (?, ?, ?, ?)";
-	public static final String UPDATE_USER = "UPDATE user SET name = (?), last_name = (?), dob = (?), email = (?) WHERE (id = (?))";
+	public static final String INSERT_NEW_USER = "INSERT INTO user (name, last_name, dob, email, pass) VALUES (?, ?, ?, ?, ?)";
+	public static final String UPDATE_USER = "UPDATE user SET name = (?), last_name = (?), dob = (?), email = (?), pass = (?) WHERE (id = (?))";
 	public static final String DELETE_USER = "DELETE FROM user WHERE (id = (?));";
 	private DataSource ds;
 
@@ -36,6 +36,8 @@ public class DefaultUserDao implements UserDao {
 				user.setLastName(rs.getString("last_name"));
 				user.setDob(rs.getString("dob"));
 				user.setEmail(rs.getString("email"));
+				user.setPass(rs.getString("pass"));
+				user.setRole(rs.getString("role"));
 			}
 
 		} catch (SQLException e) {
@@ -61,6 +63,7 @@ public class DefaultUserDao implements UserDao {
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getDob());
 			ps.setString(4, user.getEmail());
+			ps.setString(5, user.getPass());
 			// TODO change sql query to insert email and other fields
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -78,7 +81,8 @@ public class DefaultUserDao implements UserDao {
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getDob());
 			ps.setString(4, user.getEmail());
-			ps.setInt(5, user.getId());
+			ps.setString(5, user.getPass());
+			ps.setInt(6, user.getId());
 			// TODO change sql query to insert email and other fields
 			ps.executeUpdate();
 		} catch (SQLException e) {

@@ -35,12 +35,16 @@ public class SignUp extends HttpServlet {
 		String lastName = request.getParameter("last_name");
 		String dob = request.getParameter("dob");
 		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		String confPass = request.getParameter("confPass");
 
 		User user = new User();
 		user.setName(name);
 		user.setLastName(lastName);
 		user.setDob(dob);
 		user.setEmail(email);
+		user.setPass(pass);
+		System.out.println("ConfPass: " + confPass);
 
 		if (userFacade.saveUser(user)) {
 			request.setAttribute("user", user);
