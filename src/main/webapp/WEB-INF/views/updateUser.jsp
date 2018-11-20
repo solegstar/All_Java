@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="resources/js/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
 	$(document).ready(function() {
-		$("#update_button").onclick(function() {
+		$("#update_button").click(function() {
 			var password = $('#userPass').val();
 			var passwordRepeat = $('#userConfPass').val();
 			if (password !== passwordRepeat) {
@@ -22,11 +22,11 @@
 				data : {
 					userId: $('#userId').val(),
 					name : $('#userName').val(),
-					lastName : $('#userLastName').val(),
-					userPass : $('#userPass').val(),
-					userConfPass : $('#userConfPass').val(),
-					userEmail : $('#userEmail').val(),
-					userDob : $('#userDob').val()
+					last_name : $('#userLastName').val(),
+					pass : $('#userPass').val(),
+					confPass : $('#userConfPass').val(),
+					email : $('#userEmail').val(),
+					dob : $('#userDob').val()
 				},
 				method: 'POST',
 				success : function(result) {
